@@ -1,0 +1,40 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    # Rebuilds hourly so certification/employer/project edits made
+    # directly via portfolio-api (not a code push) show up on the site --
+    # same purpose the old scheduled-rebuild.yml served, just as a real
+    # build+deploy here instead of curling a Cloudflare Pages deploy hook.
+    # This site is a Cloudflare Worker (see wrangler.jsonc), not Pages --
+    # that hook pointed at nothing this project actually deploys as, so
+    # a merged PR or a data change never went live until someone ran
+    # `wrangler deploy` by hand. See #84.
+    - cron: '0 * * * *'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - run: npm ci
+
+      - run: npm run build
+        env:
+          # Public read endpoint behind a Cloudflare Tunnel -- not a secret.
+          PORTFOLIO_API_BASE_URL: https://api.hurd.cc
+
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          command: deploy

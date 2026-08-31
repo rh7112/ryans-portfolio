@@ -1,6 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "ryans-portfolio",
+  "account_id": "7ceef36ac9912fb68e8b31dc4634db5b",
   "compatibility_date": "2026-08-05",
   "observability": {
     "enabled": false,
