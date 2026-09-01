@@ -6,7 +6,7 @@ const fallbackHomeData = {
     "I’m Ryan Hurd, a software engineer focused on Retool, SQL-driven workflows, and operational tools that help people make better decisions with less friction.",
   quickFacts: [
     { label: "Current role", value: "Software Engineer" },
-    { label: "Experience", value: "5+ years of Retool experience" },
+    { label: "Experience", value: "3+ years of Retool experience" },
     { label: "Focus", value: "Retool, SQL, automation" },
   ],
   aboutTitle: "A calm, practical engineer with a strong product mindset.",
