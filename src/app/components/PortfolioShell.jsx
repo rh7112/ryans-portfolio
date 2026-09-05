@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import BuyMeACoffeeButton from "./BuyMeACoffeeButton";
 import NotTheOtherRyanHurd from "./NotTheOtherRyanHurd";
+import SiteStatus from "./SiteStatus";
 import { educationTranscripts } from "@/lib/portfolio-data";
 
 import {
@@ -416,10 +417,10 @@ export default function PortfolioShell({
             <div className="flex flex-wrap items-baseline justify-between gap-4">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-700 dark:text-orange-400">
-                  On GitHub
+                  Site Status
                 </p>
                 <h2 className="mt-2 text-2xl font-semibold text-stone-900 dark:text-white">
-                  A look at the public side of the work.
+                  A look at the public side of the work — and whether it's all still standing.
                 </h2>
               </div>
               <a
@@ -443,6 +444,11 @@ export default function PortfolioShell({
                 👤 Followers: {githubStats.followers}
               </span>
             </div>
+
+            <p className="mt-8 text-sm font-semibold uppercase tracking-[0.3em] text-orange-700 dark:text-orange-400">
+              Family sites, live
+            </p>
+            <SiteStatus />
           </div>
         </section>
       )}
