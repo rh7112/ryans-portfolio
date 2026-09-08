@@ -372,9 +372,11 @@ export function formatMonthYear(value) {
   // Date-only strings ("YYYY-MM-DD") parse as UTC midnight, which can shift
   // to the previous day/month once formatted in a non-UTC timezone. Build
   // the date from local components instead so the displayed month always
-  // matches the calendar date, regardless of server timezone.
+  // matches the calendar date, regardless of server timezone. Drop any time
+  // portion first (a "YYYY-MM-DD HH:MM:SS" value would otherwise leave day
+  // as "DD HH:MM:SS", which Number() turns into NaN).
   if (typeof value === "string") {
-    const [year, month, day] = value.split("-").map(Number);
+    const [year, month, day] = value.split(" ")[0].split("-").map(Number);
     return new Date(year, month - 1, day).toLocaleDateString("en-US", { month: "short", year: "numeric" });
   }
 
@@ -580,22 +582,28 @@ export async function getCertifications() {
 
 // Homepage teaser only -- blog.hurd.cc is the actual blog, this just points
 // at it. No fallback content: if portfolio-api is unreachable, the teaser
-// section simply doesn't render (same pattern as PSN trophies).
-export async function getLatestBlogPosts(limit = 2) {
+// section simply doesn't render (same pattern as PSN trophies). Returns the
+// single latest article and the single latest recipe (not a general top-N
+// feed) -- one card of each type, so the section always shows both sides of
+// the blog rather than whichever type happened to post most recently. type
+// is carried through so the renderer can link to the right path (/blog/ vs
+// /recipes/) on blog-hurd-cc.
+export async function getLatestBlogPosts() {
   const posts = await fetchFromApi("/api/v1/blog-posts");
 
   if (!posts?.length) {
     return [];
   }
 
-  return posts
-    .filter((post) => post.type === "article" && post.publishedAt)
-    .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
-    .slice(0, limit)
-    .map((post) => ({
-      slug: post.slug,
-      title: post.title,
-      excerpt: post.excerpt,
-      publishedAt: post.publishedAt,
-    }));
+  const published = posts.filter((post) => post.publishedAt);
+  const latestOfType = (type) =>
+    published.filter((post) => post.type === type).sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))[0];
+
+  return [latestOfType("article"), latestOfType("recipe")].filter(Boolean).map((post) => ({
+    slug: post.slug,
+    type: post.type,
+    title: post.title,
+    excerpt: post.excerpt,
+    publishedAt: post.publishedAt,
+  }));
 }

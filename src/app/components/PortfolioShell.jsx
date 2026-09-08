@@ -39,9 +39,12 @@ const nonEmployerCompanyColors = {
 
 // Date-only strings ("YYYY-MM-DD") parse as UTC midnight, which can shift to
 // the previous day in a non-UTC timezone -- build from local components
-// instead, same fix as portfolio-data.js's formatMonthYear.
+// instead, same fix as portfolio-data.js's formatMonthYear. publishedAt
+// comes from portfolio-api as a MySQL DATETIME ("YYYY-MM-DD HH:MM:SS"), so
+// the time portion is dropped first -- splitting the whole string on "-"
+// left the day as "DD HH:MM:SS", which Number() turns into NaN.
 function formatPostDate(value) {
-  const [year, month, day] = value.split("-").map(Number);
+  const [year, month, day] = value.split(" ")[0].split("-").map(Number);
   return new Date(year, month - 1, day).toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
@@ -459,10 +462,10 @@ export default function PortfolioShell({
             <div className="flex flex-wrap items-baseline justify-between gap-4">
               <div>
                 <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-700 dark:text-orange-400">
-                  Latest from the blog
+                  From the blog
                 </p>
                 <h2 className="mt-2 text-2xl font-semibold text-stone-900 dark:text-white">
-                  Family notes, projects, and the occasional recipe.
+                  Latest from the Hurd Blog
                 </h2>
               </div>
               <a
@@ -479,13 +482,13 @@ export default function PortfolioShell({
               {latestBlogPosts.map((post) => (
                 <a
                   key={post.slug}
-                  href={`https://blog.hurd.cc/blog/${post.slug}/`}
+                  href={`https://blog.hurd.cc/${post.type === "recipe" ? "recipes" : "blog"}/${post.slug}/`}
                   target="_blank"
                   rel="noreferrer"
                   className="block rounded-2xl border border-stone-900/10 bg-stone-100/70 p-5 transition hover:border-orange-600 dark:border-white/10 dark:bg-stone-950/70 dark:hover:border-orange-400"
                 >
                   <p className="text-xs uppercase tracking-[0.15em] text-stone-500 dark:text-stone-400">
-                    {formatPostDate(post.publishedAt)}
+                    {formatPostDate(post.publishedAt)} · {post.type === "recipe" ? "Recipe" : "Article"}
                   </p>
                   <h3 className="mt-2 text-lg font-semibold text-stone-900 dark:text-white">{post.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-stone-600 dark:text-stone-300">{post.excerpt}</p>
