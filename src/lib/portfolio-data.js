@@ -605,5 +605,9 @@ export async function getLatestBlogPosts() {
     title: post.title,
     excerpt: post.excerpt,
     publishedAt: post.publishedAt,
+    // details.image is a path relative to blog.hurd.cc's own origin (e.g.
+    // "/api/recipe-images/..."), fine within that site but not from here --
+    // this site is a different origin, so it needs the full URL to load.
+    image: post.details?.image ? `https://blog.hurd.cc${post.details.image}` : null,
   }));
 }
