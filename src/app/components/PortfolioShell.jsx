@@ -485,13 +485,20 @@ export default function PortfolioShell({
                   href={`https://blog.hurd.cc/${post.type === "recipe" ? "recipes" : "blog"}/${post.slug}/`}
                   target="_blank"
                   rel="noreferrer"
-                  className="block rounded-2xl border border-stone-900/10 bg-stone-100/70 p-5 transition hover:border-orange-600 dark:border-white/10 dark:bg-stone-950/70 dark:hover:border-orange-400"
+                  className="block overflow-hidden rounded-2xl border border-stone-900/10 bg-stone-100/70 transition hover:border-orange-600 dark:border-white/10 dark:bg-stone-950/70 dark:hover:border-orange-400"
                 >
-                  <p className="text-xs uppercase tracking-[0.15em] text-stone-500 dark:text-stone-400">
-                    {formatPostDate(post.publishedAt)} · {post.type === "recipe" ? "Recipe" : "Article"}
-                  </p>
-                  <h3 className="mt-2 text-lg font-semibold text-stone-900 dark:text-white">{post.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-stone-600 dark:text-stone-300">{post.excerpt}</p>
+                  {post.image && (
+                    <div className="relative h-36 w-full">
+                      <Image src={post.image} alt="" fill className="object-cover" />
+                    </div>
+                  )}
+                  <div className="p-5">
+                    <p className="text-xs uppercase tracking-[0.15em] text-stone-500 dark:text-stone-400">
+                      {formatPostDate(post.publishedAt)} · {post.type === "recipe" ? "Recipe" : "Article"}
+                    </p>
+                    <h3 className="mt-2 text-lg font-semibold text-stone-900 dark:text-white">{post.title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-stone-600 dark:text-stone-300">{post.excerpt}</p>
+                  </div>
                 </a>
               ))}
             </div>
