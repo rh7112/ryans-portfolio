@@ -97,6 +97,18 @@ export default async function RootLayout({ children }) {
         {children}
         <script type="module" src="https://cdn.jsdelivr.net/gh/rh7112/hurd-footer@main/hurd-footer.js"></script>
         <hurd-footer tagline="Ryan Hurd" link-href="https://github.com/rh7112"></hurd-footer>
+        {/* Cloudflare Web Analytics (ryans-portfolio#50) -- checking whether
+            recent SEO work (robots.txt, sitemap.xml, Person JSON-LD,
+            per-page metadata/OG tags) is actually moving traffic. Token is
+            hardcoded, not an env var -- it's a public client-side value by
+            design (visible in every page's HTML regardless), matching this
+            family of repos' existing convention for values like this
+            (see blog-hurd-cc's CommentsSection.jsx for the same reasoning). */}
+        <script
+          type="module"
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "07d239af894f42bdbf28ca24246ad6b3"}'
+        ></script>
       </body>
     </html>
   );
