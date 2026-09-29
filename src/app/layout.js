@@ -96,7 +96,7 @@ export default async function RootLayout({ children }) {
         <SiteHeader employers={employers} />
         {children}
         <script type="module" src="https://cdn.jsdelivr.net/gh/rh7112/hurd-footer@main/hurd-footer.js"></script>
-        <hurd-footer tagline="Ryan Hurd" link-href="https://github.com/rh7112"></hurd-footer>
+        <hurd-footer tagline="Ryan Hurd" link-href="https://hurd.cc"></hurd-footer>
         {/* Cloudflare Web Analytics (ryans-portfolio#50) -- checking whether
             recent SEO work (robots.txt, sitemap.xml, Person JSON-LD,
             per-page metadata/OG tags) is actually moving traffic. Token is
