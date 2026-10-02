@@ -611,3 +611,50 @@ export async function getLatestBlogPosts() {
     image: post.details?.image ? `https://blog.hurd.cc${post.details.image}` : null,
   }));
 }
+
+// Volunteer dates are often approximate, so the range shows years only.
+function formatYearRange(startDate, endDate) {
+  const startYear = String(startDate ?? "").slice(0, 4);
+  if (!startYear) {
+    return null;
+  }
+
+  const endYear = endDate ? String(endDate).slice(0, 4) : null;
+  if (!endYear) {
+    return `${startYear} – Present`;
+  }
+
+  return endYear === startYear ? startYear : `${startYear} – ${endYear}`;
+}
+
+export async function getVolunteerWork() {
+  const rows = await fetchFromApi("/api/v1/volunteer-work");
+
+  if (!Array.isArray(rows)) {
+    return [];
+  }
+
+  return rows
+    .filter((row) => row.published)
+    .map((row) => {
+      const startDate = normalizeDate(row.startDate);
+      const endDate = normalizeDate(row.endDate) ?? null;
+
+      return {
+        slug: row.slug,
+        organization: row.organization,
+        role: row.role,
+        cause: row.cause ?? null,
+        startDate,
+        endDate,
+        dateRange: formatYearRange(startDate, endDate),
+        location: row.location ?? null,
+        summary: row.summary,
+        description: row.description,
+        link: row.link ?? null,
+        hoursTotal: row.hoursTotal ?? null,
+        featured: Boolean(row.featured),
+        highlights: row.highlights ?? [],
+      };
+    });
+}
