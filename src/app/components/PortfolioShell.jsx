@@ -158,7 +158,7 @@ export default function PortfolioShell({
               >
                 Hurd Craft Co. LLC
               </a>
-              , an IT consulting practice.
+              , an IT consulting practice that's taking on new clients.
             </p>
             <NotTheOtherRyanHurd />
             <div className="mt-8 flex flex-wrap gap-4">
