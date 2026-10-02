@@ -357,6 +357,26 @@ export default function PortfolioShell({
                     {...(cert.credentialUrl
                       ? { href: cert.credentialUrl, target: "_blank", rel: "noreferrer" }
                       : {})}
+                    className="rounded-2xl border border-stone-900/10 bg-stone-100/70 p-6 dark:border-white/10 dark:bg-stone-950/70"
+                  >
+                    {cert.dateEarnedDisplay && (
+                      <p className="text-sm text-orange-700 dark:text-orange-400">{cert.dateEarnedDisplay}</p>
+                    )}
+                    <h3 className="mt-2 text-lg font-semibold text-stone-900 dark:text-white">{cert.name}</h3>
+                    {cert.issuer && <p className="mt-1 text-sm text-stone-500 dark:text-stone-400">{cert.issuer}</p>}
+                    {cert.score && <p className="mt-1 text-sm text-stone-500 dark:text-stone-400">Score: {cert.score}</p>}
+                    {cert.expired && (
+                      <p className="mt-3 inline-flex rounded-full bg-stone-900/5 px-2 py-1 text-xs font-semibold uppercase tracking-wide text-stone-500 dark:bg-white/10 dark:text-stone-400">
+                        Expired
+                      </p>
+                    )}
+                  </CertTag>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
 
       {volunteerWork?.length > 0 && (
         <section id="volunteer" className="mx-auto max-w-6xl px-6 py-8 lg:px-8">
@@ -388,26 +408,6 @@ export default function PortfolioShell({
                 </li>
               ))}
             </ul>
-          </div>
-        </section>
-      )}
-                    className="rounded-2xl border border-stone-900/10 bg-stone-100/70 p-6 dark:border-white/10 dark:bg-stone-950/70"
-                  >
-                    {cert.dateEarnedDisplay && (
-                      <p className="text-sm text-orange-700 dark:text-orange-400">{cert.dateEarnedDisplay}</p>
-                    )}
-                    <h3 className="mt-2 text-lg font-semibold text-stone-900 dark:text-white">{cert.name}</h3>
-                    {cert.issuer && <p className="mt-1 text-sm text-stone-500 dark:text-stone-400">{cert.issuer}</p>}
-                    {cert.score && <p className="mt-1 text-sm text-stone-500 dark:text-stone-400">Score: {cert.score}</p>}
-                    {cert.expired && (
-                      <p className="mt-3 inline-flex rounded-full bg-stone-900/5 px-2 py-1 text-xs font-semibold uppercase tracking-wide text-stone-500 dark:bg-white/10 dark:text-stone-400">
-                        Expired
-                      </p>
-                    )}
-                  </CertTag>
-                );
-              })}
-            </div>
           </div>
         </section>
       )}
