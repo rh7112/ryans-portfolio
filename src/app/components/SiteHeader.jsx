@@ -91,6 +91,9 @@ export default function SiteHeader({ employers = [] }) {
           <a href="https://blog.hurd.cc/recipes/" target="_blank" rel="noreferrer" className={navLinkClass}>
             Recipes
           </a>
+          <Link href="/volunteer" className={navLinkClass}>
+            Volunteer
+          </Link>
           <Link href="/#contact" className={navLinkClass}>
             Contact
           </Link>
@@ -167,6 +170,9 @@ export default function SiteHeader({ employers = [] }) {
             >
               Recipes
             </a>
+            <Link href="/volunteer" className={navLinkClass} onClick={() => setMobileOpen(false)}>
+              Volunteer
+            </Link>
             <Link href="/#contact" className={navLinkClass} onClick={() => setMobileOpen(false)}>
               Contact
             </Link>

@@ -10,7 +10,7 @@ const siteUrl = "https://ryan.hurd.cc";
 export default async function sitemap() {
   const [employers, projectsWithSlugs] = await Promise.all([getEmployers(), getProjectsWithSlugs()]);
 
-  const staticRoutes = ["", "/resume"].map((path) => ({
+  const staticRoutes = ["", "/resume", "/volunteer"].map((path) => ({
     url: `${siteUrl}${path}/`,
     lastModified: new Date(),
   }));
