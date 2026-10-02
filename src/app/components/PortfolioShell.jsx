@@ -163,7 +163,7 @@ export default function PortfolioShell({
             <NotTheOtherRyanHurd />
             <div className="mt-8 flex flex-wrap gap-4">
               <a
-                href="mailto:rh25170@gmail.com?subject=Hello%20Ryan"
+                href="mailto:ryan@hurd.cc?subject=Hello%20Ryan"
                 className="inline-flex items-center gap-2 rounded-full bg-orange-600 px-5 py-3 font-medium text-white transition hover:bg-orange-500 dark:bg-orange-500 dark:text-stone-950 dark:hover:bg-orange-400"
               >
                 Let’s connect <FaArrowRight />

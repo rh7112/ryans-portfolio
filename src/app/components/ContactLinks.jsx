@@ -10,7 +10,7 @@ import { SiIndeed } from "react-icons/si";
 // portfolio-api content (contactHeading/contactBody/contactLinks), editable
 // without a code change, not duplicated by hand.
 export const contactLinks = [
-  { label: "Email", href: "mailto:rh25170@gmail.com", icon: FaEnvelope },
+  { label: "Email", href: "mailto:ryan@hurd.cc", icon: FaEnvelope },
   { label: "Phone", href: "tel:+13525800408", icon: FaPhoneAlt },
   { label: "GitHub", href: "https://github.com/rh7112", icon: FaGithub },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/ryan-lee-hurd/", icon: FaLinkedin },

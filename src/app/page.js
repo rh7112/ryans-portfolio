@@ -13,7 +13,7 @@ import { getPsnTrophies } from "@/lib/psn-data";
 const contactLinks = [
   {
     label: "Email",
-    href: "mailto:rh25170@gmail.com",
+    href: "mailto:ryan@hurd.cc",
     icon: "email",
   },
   {
