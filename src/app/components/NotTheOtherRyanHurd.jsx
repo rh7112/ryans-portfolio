@@ -25,13 +25,10 @@ const otherRyanHurds = [
   "a public speaker",
   "a personal banker",
   "a student",
-  "a business lines consultant",
   "a production shift supervisor",
   "a process engineering analyst",
   "a brand strategist",
-  "a business owner",
   "a corrections counselor",
-  "a company president",
   "a teacher",
 ];
 
