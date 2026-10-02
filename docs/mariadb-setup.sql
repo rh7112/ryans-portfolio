@@ -1,9 +1,9 @@
 -- blog_posts (articles/recipes) used to live here. It's moved to its own
--- hurd_blog database, served by blog.hurd.cc -- not this file's concern.
+-- blog_hurd_cc database, served by blog.hurd.cc -- not this file's concern.
 
-CREATE DATABASE IF NOT EXISTS portfolio;
+CREATE DATABASE IF NOT EXISTS ryan_portfolio;
 
-USE portfolio;
+USE ryan_portfolio;
 
 CREATE TABLE IF NOT EXISTS portfolio_content (
   id INT AUTO_INCREMENT PRIMARY KEY,
