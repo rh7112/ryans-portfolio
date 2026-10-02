@@ -150,6 +150,16 @@ export default function PortfolioShell({
               {heroTitle}
             </h1>
             <p className="mt-6 max-w-2xl text-lg text-stone-600 dark:text-stone-300">{heroBody}</p>
+            <p className="mt-3 max-w-2xl text-base text-stone-600 dark:text-stone-300">
+              Founder of{" "}
+              <a
+                href="https://hurd.cc"
+                className="font-medium text-orange-700 underline-offset-4 hover:underline dark:text-orange-400"
+              >
+                Hurd Craft Co. LLC
+              </a>
+              , an IT consulting practice that's taking on new clients.
+            </p>
             <NotTheOtherRyanHurd />
             <div className="mt-8 flex flex-wrap gap-4">
               <a
