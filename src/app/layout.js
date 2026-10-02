@@ -1,7 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import SiteHeader from "./components/SiteHeader";
-import { getEmployers } from "@/lib/portfolio-data";
+import { getEmployers, getVolunteerWork } from "@/lib/portfolio-data";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -91,7 +91,20 @@ const themeInitScript = `
 `;
 
 export default async function RootLayout({ children }) {
-  const employers = await getEmployers();
+  const [employers, volunteerWork] = await Promise.all([getEmployers(), getVolunteerWork()]);
+
+  // schema.org has no volunteer-work property on Person; memberOf is the
+  // closest conformant fit for the organizations volunteered with.
+  const personWithVolunteering = volunteerWork.length
+    ? {
+        ...personJsonLd,
+        memberOf: volunteerWork.map((item) => ({
+          "@type": "Organization",
+          name: item.organization,
+          ...(item.link ? { url: item.link } : {}),
+        })),
+      }
+    : personJsonLd;
 
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
@@ -103,7 +116,7 @@ export default async function RootLayout({ children }) {
         <script
           type="application/ld+json"
           // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personWithVolunteering) }}
         />
         <SiteHeader employers={employers} />
         {children}
