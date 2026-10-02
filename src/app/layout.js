@@ -56,11 +56,17 @@ const personJsonLd = {
   url: siteUrl,
   image: `${siteUrl}/images/ryan_pfp.png`,
   jobTitle: "Software Engineer",
-  worksFor: {
-    "@type": "Organization",
-    name: "Hurd Craft Co. LLC",
-    url: "https://hurd.cc",
-  },
+  worksFor: [
+    {
+      "@type": "Organization",
+      name: "Packaging Personified, Inc.",
+    },
+    {
+      "@type": "Organization",
+      name: "Hurd Craft Co. LLC",
+      url: "https://hurd.cc",
+    },
+  ],
   sameAs: [
     "https://github.com/rh7112",
     "https://www.linkedin.com/in/ryan-lee-hurd/",
