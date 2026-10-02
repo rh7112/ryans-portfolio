@@ -60,6 +60,7 @@ const personJsonLd = {
     {
       "@type": "Organization",
       name: "Packaging Personified, Inc.",
+      url: "https://packagingpersonified.com",
     },
     {
       "@type": "Organization",
