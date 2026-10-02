@@ -32,6 +32,7 @@ const icons = {
 // coursework, personal projects) -- not real jobs, so no portfolio_employers
 // row, just a stable fallback color.
 const nonEmployerCompanyColors = {
+  "hurd-craft-co": "orange",
   "purdue-university": "orange",
   "ivy-tech": "orange",
   "personal-projects": "orange",
@@ -79,15 +80,17 @@ function getCompanyCardClass(color) {
   }
 }
 
-// Order non-employer groups (school coursework, personal projects) after
-// real employers, which are ordered by their own sort_order.
+// Hurd Craft Co. (Ryan's own company) leads the projects list, ahead of
+// employers. Other non-employer groups (school coursework, personal projects)
+// follow the real employers, which are ordered by their own sort_order.
+const leadingGroupOrder = ["hurd-craft-co"];
 const nonEmployerGroupOrder = ["purdue-university", "ivy-tech", "personal-projects"];
 
 function groupProjectsByCompany(projects, employers) {
   const employerOrder = [...employers]
     .sort((a, b) => a.sortOrder - b.sortOrder)
     .map((employer) => employer.slug);
-  const groupOrder = [...employerOrder, ...nonEmployerGroupOrder];
+  const groupOrder = [...leadingGroupOrder, ...employerOrder, ...nonEmployerGroupOrder];
 
   const bySlug = new Map();
   for (const project of projects) {
