@@ -311,40 +311,6 @@ export default function PortfolioShell({
         </div>
       </section>
 
-      {volunteerWork?.length > 0 && (
-        <section id="volunteer" className="mx-auto max-w-6xl px-6 py-8 lg:px-8">
-          <div className="rounded-3xl border border-stone-900/10 bg-white/70 p-8 dark:border-white/10 dark:bg-stone-900/60 lg:p-10">
-            <div className="flex flex-wrap items-end justify-between gap-4">
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-700 dark:text-orange-400">Volunteer work</p>
-                <h2 className="mt-2 text-3xl font-semibold text-stone-900 dark:text-white">Giving back locally.</h2>
-              </div>
-              <Link
-                href="/volunteer"
-                className="inline-flex items-center gap-2 text-sm font-medium text-orange-700 underline-offset-4 hover:underline dark:text-orange-400"
-              >
-                View all volunteer work <FaArrowRight />
-              </Link>
-            </div>
-            <ul className="mt-8 grid gap-4 sm:grid-cols-2">
-              {volunteerWork.map((item) => (
-                <li
-                  key={item.slug}
-                  className="rounded-2xl border border-stone-900/10 bg-stone-100/70 p-5 dark:border-white/10 dark:bg-stone-950/70"
-                >
-                  <p className="text-sm text-orange-700 dark:text-orange-400">{item.dateRange}</p>
-                  <h3 className="mt-1 text-lg font-semibold text-stone-900 dark:text-white">{item.organization}</h3>
-                  <p className="text-sm text-stone-500 dark:text-stone-400">
-                    {item.role}
-                    {item.cause ? ` · ${item.cause}` : ""}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-      )}
-
       <section id="education" className="mx-auto max-w-6xl px-6 py-8 lg:px-8">
         <div className="rounded-3xl border border-stone-900/10 bg-white/70 p-8 dark:border-white/10 dark:bg-stone-900/60 lg:p-10">
           <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-700 dark:text-orange-400">Education</p>
@@ -408,6 +374,40 @@ export default function PortfolioShell({
                 );
               })}
             </div>
+          </div>
+        </section>
+      )}
+
+      {volunteerWork?.length > 0 && (
+        <section id="volunteer" className="mx-auto max-w-6xl px-6 py-8 lg:px-8">
+          <div className="rounded-3xl border border-stone-900/10 bg-white/70 p-8 dark:border-white/10 dark:bg-stone-900/60 lg:p-10">
+            <div className="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-orange-700 dark:text-orange-400">Volunteer work</p>
+                <h2 className="mt-2 text-3xl font-semibold text-stone-900 dark:text-white">Giving back locally.</h2>
+              </div>
+              <Link
+                href="/volunteer"
+                className="inline-flex items-center gap-2 text-sm font-medium text-orange-700 underline-offset-4 hover:underline dark:text-orange-400"
+              >
+                View all volunteer work <FaArrowRight />
+              </Link>
+            </div>
+            <ul className="mt-8 grid gap-4 sm:grid-cols-2">
+              {volunteerWork.map((item) => (
+                <li
+                  key={item.slug}
+                  className="rounded-2xl border border-stone-900/10 bg-stone-100/70 p-5 dark:border-white/10 dark:bg-stone-950/70"
+                >
+                  <p className="text-sm text-orange-700 dark:text-orange-400">{item.dateRange}</p>
+                  <h3 className="mt-1 text-lg font-semibold text-stone-900 dark:text-white">{item.organization}</h3>
+                  <p className="text-sm text-stone-500 dark:text-stone-400">
+                    {item.role}
+                    {item.cause ? ` · ${item.cause}` : ""}
+                  </p>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
       )}
