@@ -1,0 +1,28 @@
+name: CI
+
+# Runs the unit tests and the static export build.
+# Runs on pull requests so a broken build shows up on the PR instead of
+# after merge. Deploy is deploy.yml.
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+        env:
+          # Public read endpoint behind a Cloudflare Tunnel -- not a secret.
+          PORTFOLIO_API_BASE_URL: https://api.hurd.cc
