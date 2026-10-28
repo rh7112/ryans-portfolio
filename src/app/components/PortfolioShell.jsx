@@ -185,6 +185,20 @@ export default function PortfolioShell({
                 HTML resume <FaFileAlt />
               </Link>
             </div>
+            <div className="mt-8 flex max-w-2xl flex-col gap-4 rounded-2xl border border-orange-700/20 bg-orange-50/70 p-5 sm:flex-row sm:items-center sm:justify-between dark:border-orange-400/20 dark:bg-orange-400/5">
+              <div>
+                <p className="font-semibold text-stone-900 dark:text-white">Want a more interactive version?</p>
+                <p className="mt-1 text-sm text-stone-600 dark:text-stone-300">
+                  Explore my portfolio as an illustrated desk: open the monitors, pick up the phone, browse the bookshelf.
+                </p>
+              </div>
+              <a
+                href="https://desk.hurd.cc"
+                className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-stone-900 px-5 py-3 font-medium text-white transition hover:bg-stone-700 dark:bg-white dark:text-stone-950 dark:hover:bg-stone-200"
+              >
+                Explore the desk <FaArrowRight />
+              </a>
+            </div>
           </div>
 
           <div className="order-1 rounded-3xl border border-stone-900/10 bg-white/80 p-6 shadow-2xl shadow-stone-900/10 lg:order-2 dark:border-white/10 dark:bg-stone-900/70 dark:shadow-stone-950/50">
