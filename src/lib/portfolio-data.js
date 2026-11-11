@@ -72,11 +72,34 @@ const fallbackHomeData = {
 
 const fallbackEmployers = [
   {
+    slug: "hurd-craft-co",
+    name: "Hurd Craft Co. LLC",
+    title: "Founder & Web Developer",
+    startDate: "2026-09-01",
+    endDate: null,
+    location: "Indiana",
+    summary:
+      "Designing, building, and hosting websites and local search presence for small businesses.",
+    description:
+      "Founded a web design and development studio serving local small businesses, handling everything from discovery, pricing, and contracts through launch, hosting, and ongoing support. Also builds the internal tooling that runs the business, including a Go and MySQL API and an admin dashboard with an outreach pipeline.",
+    sortOrder: 0,
+    color: "orange",
+    secondaryColor: null,
+    highlights: [
+      "Design, build, and host websites for local small businesses, from first conversation to launch and ongoing hosting.",
+      "Set up and optimize Google Business Profile, Yelp, and Apple business listings so clients show up in local search.",
+      "Wrote the client services agreements, hosting addendum, and intake questionnaire, and run discovery, pricing, and scoping.",
+      "Built and operate internal tooling: a Go and MySQL API and an admin dashboard with an outreach pipeline for tracking prospects.",
+      "Use a CRM and structured outreach to find and follow up with local businesses.",
+    ],
+    caseStudies: [],
+  },
+  {
     slug: "packaging-personified",
     name: "Packaging Personified, Inc.",
     title: "Software Engineer",
     startDate: "2025-10-01",
-    endDate: null,
+    endDate: "2026-10-01",
     location: "Warsaw, IN",
     summary:
       "Building internal Retool applications for production, compliance, accounting, and operations teams.",
