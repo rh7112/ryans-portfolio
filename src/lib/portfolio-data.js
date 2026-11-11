@@ -76,7 +76,7 @@ const fallbackEmployers = [
     name: "Packaging Personified, Inc.",
     title: "Software Engineer",
     startDate: "2025-10-01",
-    endDate: null,
+    endDate: "2026-10-01",
     location: "Warsaw, IN",
     summary:
       "Building internal Retool applications for production, compliance, accounting, and operations teams.",

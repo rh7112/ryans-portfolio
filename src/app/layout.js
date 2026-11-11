@@ -59,11 +59,6 @@ const personJsonLd = {
   worksFor: [
     {
       "@type": "Organization",
-      name: "Packaging Personified, Inc.",
-      url: "https://packagingpersonified.com",
-    },
-    {
-      "@type": "Organization",
       name: "Hurd Craft Co. LLC",
       url: "https://hurd.cc",
     },
