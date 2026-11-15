@@ -29,6 +29,13 @@ jobs:
 
       - run: npm ci
 
+      # Don't build (and replace the live site) while portfolio-api is
+      # unreachable: an unreachable API bakes empty project/employer lists
+      # into the static page. A failed run just keeps the last good deploy.
+      - run: node scripts/check-portfolio-api-health.mjs
+        env:
+          PORTFOLIO_API_BASE_URL: https://api.hurd.cc
+
       - run: npm run build
         env:
           # Public read endpoint behind a Cloudflare Tunnel -- not a secret.
